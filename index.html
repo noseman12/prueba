@@ -1,631 +1,1075 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>CIER</title>
-
-  <style>
-    :root {
-      --bg: #061a2d;
-      --bg-2: #0a2d42;
-      --card: rgba(255,255,255,0.07);
-      --card-hover: rgba(255,255,255,0.11);
-      --border: rgba(255,255,255,0.13);
-      --text: #ffffff;
-      --muted: rgba(255,255,255,0.62);
-      --accent: #65d6cf;
-      --accent-soft: rgba(101,214,207,0.12);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      min-height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--text);
-
-      background:
-        radial-gradient(
-          circle at 100% 0%,
-          rgba(101,214,207,0.16),
-          transparent 35%
-        ),
-        linear-gradient(
-          160deg,
-          var(--bg),
-          var(--bg-2)
-        );
-
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    .page {
-      width: 100%;
-      max-width: 600px;
-      margin: 0 auto;
-      padding:
-        max(20px, env(safe-area-inset-top))
-        18px
-        max(30px, env(safe-area-inset-bottom));
-    }
-
-    /* HEADER */
-
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-      margin-bottom: 38px;
-    }
-
-    .logo {
-      min-width: 78px;
-      padding: 11px 15px;
-
-      border: 1px solid rgba(255,255,255,0.3);
-      border-radius: 12px;
-
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: 4px;
-      text-align: center;
-    }
-
-    .event {
-      text-align: right;
-      font-size: 11px;
-      line-height: 1.45;
-      color: var(--muted);
-    }
-
-    .event strong {
-      display: block;
-      color: white;
-      font-size: 12px;
-      letter-spacing: 0.8px;
-    }
-
-    /* HERO */
-
-    .hero {
-      margin-bottom: 34px;
-    }
+<meta charset="UTF-8">
 
-    .tag {
-      display: inline-flex;
-      align-items: center;
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+>
 
-      padding: 7px 11px;
-      margin-bottom: 17px;
+<title>Descubrí CIER</title>
 
-      border: 1px solid rgba(101,214,207,0.25);
-      border-radius: 100px;
+<style>
 
-      background: rgba(101,214,207,0.06);
+:root{
+  --blue:#08A5D5;
+  --blue-dark:#087DAA;
+  --blue-soft:#E9F7FC;
 
-      color: var(--accent);
+  --green:#159D60;
+  --yellow:#F6DF39;
+  --red:#DF3834;
 
-      font-size: 10px;
-      letter-spacing: 1.7px;
-      font-weight: 600;
-    }
+  --text:#1D2A33;
+  --muted:#687780;
 
-    h1 {
-      max-width: 500px;
-      font-size: clamp(34px, 10vw, 50px);
-      line-height: 0.98;
-      letter-spacing: -1.8px;
-      font-weight: 500;
-    }
+  --line:#DCE7EB;
+  --white:#FFFFFF;
+  --bg:#F5F8F9;
+}
 
-    h1 span {
-      color: var(--accent);
-    }
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
-    .intro {
-      margin-top: 17px;
+html{
+  scroll-behavior:smooth;
+}
 
-      max-width: 440px;
+body{
+  min-height:100vh;
 
-      font-size: 15px;
-      line-height: 1.55;
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
 
-      color: var(--muted);
-    }
+  color:var(--text);
+  background:var(--bg);
 
-    /* BOTONERA */
+  -webkit-font-smoothing:antialiased;
+}
 
-    .buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
+a{
+  color:inherit;
+}
 
-    .card {
-      position: relative;
 
-      display: flex;
-      align-items: center;
+/* =========================
+   CONTENEDOR
+========================= */
 
-      min-height: 105px;
+.page{
+  width:100%;
+  max-width:620px;
 
-      padding: 18px;
-      padding-right: 55px;
+  margin:auto;
 
-      border: 1px solid var(--border);
-      border-radius: 19px;
+  background:white;
 
-      background: var(--card);
+  min-height:100vh;
 
-      text-decoration: none;
+  padding-bottom:
+    max(32px, env(safe-area-inset-bottom));
+}
 
-      overflow: hidden;
 
-      transition:
-        transform 0.2s ease,
-        background 0.2s ease,
-        border-color 0.2s ease;
-    }
+/* =========================
+   FRANJA SUPERIOR CIER
+========================= */
 
-    .card:active {
-      transform: scale(0.985);
-      background: var(--card-hover);
-      border-color: rgba(101,214,207,0.5);
-    }
+.top-line{
+  height:7px;
 
-    .icon {
-      flex-shrink: 0;
+  background:
+    linear-gradient(
+      90deg,
+      var(--blue) 0%,
+      var(--blue) 55%,
+      var(--green) 55%,
+      var(--green) 70%,
+      var(--yellow) 70%,
+      var(--yellow) 85%,
+      var(--red) 85%,
+      var(--red) 100%
+    );
+}
 
-      width: 52px;
-      height: 52px;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+/* =========================
+   HEADER
+========================= */
 
-      margin-right: 16px;
+.header{
+  padding:
+    max(20px, env(safe-area-inset-top))
+    20px
+    18px;
 
-      border-radius: 15px;
-      border: 1px solid rgba(101,214,207,0.34);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 
-      background: var(--accent-soft);
+  border-bottom:
+    1px solid #EEF2F3;
+}
 
-      color: var(--accent);
 
-      font-size: 23px;
-    }
+/* LOGO SIMULADO */
 
-    .text {
-      min-width: 0;
-    }
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
 
-    .number {
-      margin-bottom: 4px;
+.hex-logo{
+  position:relative;
 
-      color: var(--accent);
+  width:58px;
+  height:50px;
+}
 
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 1.4px;
-    }
+.hex{
+  position:absolute;
 
-    .card h2 {
-      font-size: 18px;
-      line-height: 1.15;
-      font-weight: 600;
-    }
+  width:20px;
+  height:18px;
 
-    .card p {
-      margin-top: 5px;
+  clip-path:
+  polygon(
+    25% 0%,
+    75% 0%,
+    100% 50%,
+    75% 100%,
+    25% 100%,
+    0% 50%
+  );
+}
 
-      color: var(--muted);
+.hex.blue{
+  background:var(--blue);
+  left:0;
+  top:15px;
+}
 
-      font-size: 12px;
-      line-height: 1.4;
-    }
+.hex.yellow{
+  background:var(--yellow);
+  left:19px;
+  top:3px;
+}
 
-    .arrow {
-      position: absolute;
+.hex.white{
+  background:white;
 
-      right: 18px;
-      top: 50%;
+  border:1px solid #ABB8BD;
 
-      transform: translateY(-50%);
+  left:38px;
+  top:15px;
+}
 
-      color: rgba(255,255,255,0.6);
+.hex.green{
+  background:var(--green);
+  left:10px;
+  top:31px;
+}
 
-      font-size: 23px;
-    }
+.hex.red{
+  background:var(--red);
+  left:29px;
+  top:31px;
+}
 
-    .featured {
-      border-color: rgba(101,214,207,0.42);
+.cier-word{
+  font-size:22px;
+  font-weight:700;
 
-      background:
-        linear-gradient(
-          120deg,
-          rgba(101,214,207,0.14),
-          rgba(255,255,255,0.05)
-        );
-    }
+  letter-spacing:-1px;
 
-    /* CTA */
+  color:#242C30;
+}
 
-    .main-cta {
-      display: block;
+.cier-sub{
+  display:block;
 
-      margin-top: 24px;
-      padding: 17px 20px;
+  margin-top:2px;
 
-      border-radius: 16px;
+  font-size:7px;
+  line-height:1.15;
 
-      background: var(--accent);
+  max-width:105px;
 
-      color: #06242c;
+  text-transform:uppercase;
 
-      text-decoration: none;
-      text-align: center;
+  color:#5E686D;
+}
 
-      font-size: 14px;
-      font-weight: 700;
-    }
 
-    .main-cta:active {
-      transform: scale(0.99);
-    }
+/* EVENTO */
 
-    /* FOOTER */
+.event{
+  text-align:right;
 
-    footer {
-      margin-top: 34px;
-      padding-top: 22px;
+  color:#79868B;
 
-      border-top: 1px solid rgba(255,255,255,0.09);
+  font-size:9px;
+  line-height:1.4;
+}
 
-      text-align: center;
+.event strong{
+  display:block;
 
-      color: rgba(255,255,255,0.4);
+  color:var(--blue-dark);
 
-      font-size: 11px;
-      line-height: 1.6;
-    }
+  font-size:10px;
+  letter-spacing:.6px;
+}
 
-    footer a {
-      display: inline-block;
 
-      margin-top: 5px;
+/* =========================
+   HERO
+========================= */
 
-      color: var(--accent);
-      text-decoration: none;
-    }
+.hero{
+  position:relative;
 
-    /* DESKTOP */
+  padding:
+    44px
+    22px
+    38px;
 
-    @media (min-width: 760px) {
+  overflow:hidden;
 
-      .page {
-        max-width: 1100px;
-        padding-left: 35px;
-        padding-right: 35px;
-      }
+  background:white;
+}
 
-      .buttons {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-      }
+.hero::after{
+  content:"";
 
-      .card {
-        min-height: 125px;
-      }
+  position:absolute;
 
-      .hero {
-        max-width: 680px;
-      }
+  width:230px;
+  height:230px;
 
-    }
+  border-radius:50%;
 
-  </style>
+  right:-145px;
+  top:-100px;
+
+  background:var(--blue-soft);
+}
+
+.label{
+  position:relative;
+  z-index:2;
+
+  display:inline-block;
+
+  margin-bottom:16px;
+
+  color:var(--blue-dark);
+
+  font-size:10px;
+  font-weight:700;
+
+  letter-spacing:1.5px;
+
+  text-transform:uppercase;
+}
+
+h1{
+  position:relative;
+  z-index:2;
+
+  max-width:480px;
+
+  font-size:
+    clamp(37px,10.5vw,54px);
+
+  line-height:1;
+
+  letter-spacing:-2px;
+
+  font-weight:700;
+
+  color:#273339;
+}
+
+h1 span{
+  color:var(--blue);
+}
+
+.description{
+  position:relative;
+  z-index:2;
+
+  max-width:440px;
+
+  margin-top:18px;
+
+  color:var(--muted);
+
+  font-size:15px;
+  line-height:1.5;
+}
+
+
+/* =========================
+   TÍTULO BOTONERA
+========================= */
+
+.section-title{
+  padding:
+    0
+    20px
+    12px;
+
+  color:#66747A;
+
+  font-size:10px;
+  font-weight:700;
+
+  letter-spacing:1.4px;
+
+  text-transform:uppercase;
+}
+
+
+/* =========================
+   BOTONERA
+========================= */
+
+.buttons{
+  padding:
+    0
+    16px;
+
+  display:flex;
+  flex-direction:column;
+
+  gap:10px;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.card{
+  position:relative;
+
+  display:flex;
+  align-items:center;
+
+  min-height:108px;
+
+  padding:
+    16px
+    48px
+    16px
+    16px;
+
+  border:
+    1px solid var(--line);
+
+  border-radius:14px;
+
+  background:white;
+
+  text-decoration:none;
+
+  overflow:hidden;
+
+  box-shadow:
+    0 3px 14px
+    rgba(40,70,80,.05);
+
+  transition:
+    transform .16s ease,
+    border-color .16s ease,
+    box-shadow .16s ease;
+
+  -webkit-tap-highlight-color:transparent;
+}
+
+.card:active{
+  transform:scale(.985);
+
+  border-color:
+    rgba(8,165,213,.55);
+
+  box-shadow:
+    0 4px 15px
+    rgba(8,165,213,.12);
+}
+
+
+/* BARRA DE COLOR */
+
+.card::before{
+  content:"";
+
+  position:absolute;
+
+  left:0;
+  top:0;
+  bottom:0;
+
+  width:5px;
+
+  background:var(--blue);
+}
+
+.card.green::before{
+  background:var(--green);
+}
+
+.card.yellow::before{
+  background:var(--yellow);
+}
+
+.card.red::before{
+  background:var(--red);
+}
+
+
+/* ICONO */
+
+.icon{
+  width:52px;
+  height:52px;
+
+  flex:
+    0 0 52px;
+
+  margin-right:15px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:12px;
+
+  background:var(--blue-soft);
+
+  color:var(--blue-dark);
+
+  font-size:23px;
+}
+
+.green .icon{
+  background:#E9F6EF;
+  color:var(--green);
+}
+
+.yellow .icon{
+  background:#FFF9D6;
+  color:#A58900;
+}
+
+.red .icon{
+  background:#FBEDEC;
+  color:var(--red);
+}
+
+
+/* TEXTO */
+
+.card-content{
+  min-width:0;
+}
+
+.number{
+  margin-bottom:4px;
+
+  color:#87949A;
+
+  font-size:9px;
+  font-weight:700;
+
+  letter-spacing:1.3px;
+
+  text-transform:uppercase;
+}
+
+.card h2{
+  margin-bottom:5px;
+
+  color:#26343A;
+
+  font-size:18px;
+  line-height:1.15;
+
+  font-weight:700;
+}
+
+.card p{
+  color:#76858B;
+
+  font-size:12px;
+  line-height:1.4;
+}
+
+.arrow{
+  position:absolute;
+
+  right:17px;
+  top:50%;
+
+  transform:
+    translateY(-50%);
+
+  color:var(--blue);
+
+  font-size:22px;
+}
+
+
+/* =========================
+   AFILIACIÓN DESTACADA
+========================= */
+
+.card.featured{
+  margin-top:5px;
+
+  border:
+    1px solid
+    rgba(8,165,213,.45);
+
+  background:
+    linear-gradient(
+      110deg,
+      #EFFAFF,
+      white
+    );
+}
+
+.card.featured::before{
+  width:6px;
+
+  background:var(--blue);
+}
+
+.card.featured .icon{
+  color:white;
+
+  background:var(--blue);
+}
+
+.card.featured h2{
+  color:var(--blue-dark);
+}
+
+
+/* =========================
+   CTA SITIO PRINCIPAL
+========================= */
+
+.website{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  margin:
+    22px
+    16px
+    0;
+
+  padding:
+    17px
+    18px;
+
+  border-radius:12px;
+
+  background:var(--blue);
+
+  color:white;
+
+  text-decoration:none;
+
+  font-size:13px;
+  font-weight:700;
+}
+
+.website span{
+  font-size:20px;
+}
+
+
+/* =========================
+   FRANJA INSTITUCIONAL
+========================= */
+
+.integration{
+  margin-top:28px;
+
+  padding:
+    28px
+    22px;
+
+  background:#F0F7F9;
+
+  text-align:center;
+}
+
+.integration strong{
+  display:block;
+
+  margin-bottom:6px;
+
+  color:var(--blue-dark);
+
+  font-size:17px;
+}
+
+.integration p{
+  max-width:370px;
+
+  margin:auto;
+
+  color:#718087;
+
+  font-size:12px;
+  line-height:1.5;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+  padding:
+    24px
+    20px
+    10px;
+
+  text-align:center;
+
+  color:#8B969A;
+
+  font-size:10px;
+  line-height:1.6;
+}
+
+
+/* =========================
+   DESKTOP
+========================= */
+
+@media(min-width:800px){
+
+  body{
+    background:#E9EFF1;
+  }
+
+  .page{
+    max-width:1050px;
+
+    box-shadow:
+      0 0 40px
+      rgba(30,60,70,.08);
+  }
+
+  .hero{
+    padding-left:36px;
+    padding-right:36px;
+  }
+
+  .section-title{
+    padding-left:36px;
+  }
+
+  .buttons{
+    padding:
+      0
+      36px;
+
+    display:grid;
+
+    grid-template-columns:
+      repeat(2,1fr);
+
+    gap:13px;
+  }
+
+  .website{
+    margin-left:36px;
+    margin-right:36px;
+  }
+
+}
+
+</style>
 </head>
 
 
 <body>
 
-  <main class="page">
+<main class="page">
 
-    <!-- CABECERA -->
+  <div class="top-line"></div>
 
-    <header>
 
-      <div class="logo">
-        CIER
+  <!-- HEADER -->
+
+  <header class="header">
+
+    <div class="brand">
+
+      <!--
+      Logo geométrico de referencia.
+      Si tenés el logo oficial, reemplazá
+      todo .hex-logo por una etiqueta <img>
+      -->
+
+      <div class="hex-logo">
+
+        <span class="hex blue"></span>
+        <span class="hex yellow"></span>
+        <span class="hex white"></span>
+        <span class="hex green"></span>
+        <span class="hex red"></span>
+
       </div>
 
-      <div class="event">
-        <strong>V SIMPOSIO CIER</strong>
-        Montevideo · 2026
+      <div>
+
+        <div class="cier-word">
+          cier
+        </div>
+
+        <span class="cier-sub">
+          Comisión de Integración
+          Energética Regional
+        </span>
+
       </div>
 
-    </header>
+    </div>
 
 
-    <!-- PRESENTACIÓN -->
+    <div class="event">
 
-    <section class="hero">
+      <strong>
+        V SIMPOSIO CIER
+      </strong>
 
-      <div class="tag">
-        ENERGÍA · INNOVACIÓN · REGIÓN
-      </div>
+      Montevideo · 2026
 
-      <h1>
-        Conectamos<br>
-        <span>energía y futuro.</span>
-      </h1>
+    </div>
 
-      <p class="intro">
-        Explorá contenidos, capacitación, innovación y oportunidades
-        de la comunidad energética regional.
-      </p>
+  </header>
 
-    </section>
 
 
-    <!-- BOTONES -->
+  <!-- HERO -->
 
-    <section class="buttons">
+  <section class="hero">
 
-      <!-- 01 -->
+    <div class="label">
+      Integración energética regional
+    </div>
 
-      <a
-        href="https://cier.org"
-        class="card"
-        target="_blank"
-        rel="noopener"
-      >
+    <h1>
+      Conectamos una región
+      <span>a través de la energía.</span>
+    </h1>
 
-        <div class="icon">
-          ◎
-        </div>
+    <p class="description">
 
-        <div class="text">
+      Descubrí conocimiento, formación,
+      eventos y oportunidades para conectarte
+      con la comunidad energética de
+      América Latina y el Caribe.
 
-          <div class="number">
-            01
-          </div>
+    </p>
 
-          <h2>
-            Conocé CIER
-          </h2>
+  </section>
 
-          <p>
-            Nuestra comunidad y presencia regional.
-          </p>
 
-        </div>
 
-        <div class="arrow">
-          →
-        </div>
+  <div class="section-title">
+    Descubrí CIER
+  </div>
 
-      </a>
 
 
-      <!-- 02 -->
+  <!-- BOTONERA -->
 
-      <a
-        href="#"
-        class="card"
-      >
+  <section class="buttons">
 
-        <div class="icon">
-          ◇
-        </div>
 
-        <div class="text">
-
-          <div class="number">
-            02
-          </div>
-
-          <h2>
-            Capacitación CIER
-          </h2>
-
-          <p>
-            Formación para profesionales del sector.
-          </p>
-
-        </div>
-
-        <div class="arrow">
-          →
-        </div>
-
-      </a>
-
-
-      <!-- 03 -->
-
-      <a
-        href="#"
-        class="card"
-      >
-
-        <div class="icon">
-          ▥
-        </div>
-
-        <div class="text">
-
-          <div class="number">
-            03
-          </div>
-
-          <h2>
-            Estudios e informes
-          </h2>
-
-          <p>
-            Información para mejores decisiones.
-          </p>
-
-        </div>
-
-        <div class="arrow">
-          →
-        </div>
-
-      </a>
-
-
-      <!-- 04 -->
-
-      <a
-        href="#"
-        class="card"
-      >
-
-        <div class="icon">
-          ✦
-        </div>
-
-        <div class="text">
-
-          <div class="number">
-            04
-          </div>
-
-          <h2>
-            Innovación
-          </h2>
-
-          <p>
-            Tecnología y transformación energética.
-          </p>
-
-        </div>
-
-        <div class="arrow">
-          →
-        </div>
-
-      </a>
-
-
-      <!-- 05 -->
-
-      <a
-        href="#"
-        class="card"
-      >
-
-        <div class="icon">
-          □
-        </div>
-
-        <div class="text">
-
-          <div class="number">
-            05
-          </div>
-
-          <h2>
-            Próximos eventos
-          </h2>
-
-          <p>
-            Encuentros y actividades en la región.
-          </p>
-
-        </div>
-
-        <div class="arrow">
-          →
-        </div>
-
-      </a>
-
-
-      <!-- 06 -->
-
-      <a
-        href="#"
-        class="card featured"
-      >
-
-        <div class="icon">
-          +
-        </div>
-
-        <div class="text">
-
-          <div class="number">
-            06
-          </div>
-
-          <h2>
-            Sumate a CIER
-          </h2>
-
-          <p>
-            Conectá con la comunidad energética.
-          </p>
-
-        </div>
-
-        <div class="arrow">
-          →
-        </div>
-
-      </a>
-
-    </section>
-
-
-    <!-- BOTÓN PRINCIPAL -->
+    <!-- 01 -->
 
     <a
-      class="main-cta"
-      href="https://cier.org"
-      target="_blank"
-      rel="noopener"
+      href="https://cier.org/nosotros/"
+      class="card"
     >
-      Visitar cier.org ↗
+
+      <div class="icon">
+        ◉
+      </div>
+
+      <div class="card-content">
+
+        <div class="number">
+          01 · Institucional
+        </div>
+
+        <h2>
+          Conocé CIER
+        </h2>
+
+        <p>
+          Nuestra historia, misión,
+          alcance y presencia regional.
+        </p>
+
+      </div>
+
+      <span class="arrow">
+        →
+      </span>
+
     </a>
 
 
-    <!-- PIE -->
 
-    <footer>
+    <!-- 02 -->
 
-      Comisión de Integración Energética Regional
+    <a
+      href="https://cier.org/capacitaciones/"
+      class="card green"
+    >
 
-      <br>
+      <div class="icon">
+        ◇
+      </div>
 
-      <a
-        href="https://cier.org"
-        target="_blank"
-        rel="noopener"
-      >
-        cier.org
-      </a>
+      <div class="card-content">
 
-    </footer>
+        <div class="number">
+          02 · Desarrollo profesional
+        </div>
 
-  </main>
+        <h2>
+          Capacitaciones
+        </h2>
+
+        <p>
+          Cursos y programas especializados
+          para profesionales del sector.
+        </p>
+
+      </div>
+
+      <span class="arrow">
+        →
+      </span>
+
+    </a>
+
+
+
+    <!-- 03 -->
+
+    <a
+      href="https://cier.org/conocimientos/"
+      class="card yellow"
+    >
+
+      <div class="icon">
+        ▥
+      </div>
+
+      <div class="card-content">
+
+        <div class="number">
+          03 · Información
+        </div>
+
+        <h2>
+          Conocimiento
+        </h2>
+
+        <p>
+          Estudios, informes,
+          estadísticas y mejores prácticas.
+        </p>
+
+      </div>
+
+      <span class="arrow">
+        →
+      </span>
+
+    </a>
+
+
+
+    <!-- 04 -->
+
+    <a
+      href="https://cier.org/eventos/"
+      class="card red"
+    >
+
+      <div class="icon">
+        ◫
+      </div>
+
+      <div class="card-content">
+
+        <div class="number">
+          04 · Comunidad
+        </div>
+
+        <h2>
+          Eventos CIER
+        </h2>
+
+        <p>
+          Encuentros con líderes
+          y profesionales de toda la región.
+        </p>
+
+      </div>
+
+      <span class="arrow">
+        →
+      </span>
+
+    </a>
+
+
+
+    <!-- 05 -->
+
+    <a
+      href="https://cier.org/proyectos/"
+      class="card"
+    >
+
+      <div class="icon">
+        ✦
+      </div>
+
+      <div class="card-content">
+
+        <div class="number">
+          05 · Integración
+        </div>
+
+        <h2>
+          Proyectos
+        </h2>
+
+        <p>
+          Iniciativas y trabajo colaborativo
+          para transformar el sector energético.
+        </p>
+
+      </div>
+
+      <span class="arrow">
+        →
+      </span>
+
+    </a>
+
+
+
+    <!-- 06 -->
+
+    <a
+      href="https://cier.org/beneficios-de-afiliarse/"
+      class="card featured"
+    >
+
+      <div class="icon">
+        +
+      </div>
+
+      <div class="card-content">
+
+        <div class="number">
+          06 · Formá parte
+        </div>
+
+        <h2>
+          Sumate a CIER
+        </h2>
+
+        <p>
+          Descubrí los beneficios
+          de integrar la comunidad CIER.
+        </p>
+
+      </div>
+
+      <span class="arrow">
+        →
+      </span>
+
+    </a>
+
+
+  </section>
+
+
+
+  <!-- CTA -->
+
+  <a
+    href="https://cier.org/"
+    class="website"
+  >
+
+    Visitar cier.org
+
+    <span>
+      ↗
+    </span>
+
+  </a>
+
+
+
+  <!-- INSTITUCIONAL -->
+
+  <section class="integration">
+
+    <strong>
+      Integración energética regional
+    </strong>
+
+    <p>
+      Promovemos e impulsamos la integración
+      del sector energético regional.
+    </p>
+
+  </section>
+
+
+
+  <!-- FOOTER -->
+
+  <footer class="footer">
+
+    Comisión de Integración Energética Regional
+
+    <br>
+
+    Montevideo · Uruguay
+
+  </footer>
+
+
+</main>
 
 </body>
 </html>

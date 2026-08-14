@@ -3,477 +3,628 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CIER - Botonera</title>
+
+  <title>CIER</title>
 
   <style>
+    :root {
+      --bg: #061a2d;
+      --bg-2: #0a2d42;
+      --card: rgba(255,255,255,0.07);
+      --card-hover: rgba(255,255,255,0.11);
+      --border: rgba(255,255,255,0.13);
+      --text: #ffffff;
+      --muted: rgba(255,255,255,0.62);
+      --accent: #65d6cf;
+      --accent-soft: rgba(101,214,207,0.12);
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       min-height: 100vh;
       font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+
       background:
-        radial-gradient(circle at 85% 15%, rgba(40, 210, 195, 0.15), transparent 30%),
-        linear-gradient(145deg, #06172a, #0b2940 60%, #073848);
-      color: white;
-      overflow-x: hidden;
+        radial-gradient(
+          circle at 100% 0%,
+          rgba(101,214,207,0.16),
+          transparent 35%
+        ),
+        linear-gradient(
+          160deg,
+          var(--bg),
+          var(--bg-2)
+        );
+
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
     }
 
     .page {
-      position: relative;
-      max-width: 1400px;
+      width: 100%;
+      max-width: 600px;
       margin: 0 auto;
-      padding: 35px 50px 30px;
-      min-height: 100vh;
-    }
-
-    /* Fondo decorativo */
-    .network {
-      position: fixed;
-      inset: 0;
-      opacity: 0.12;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .content {
-      position: relative;
-      z-index: 1;
+      padding:
+        max(20px, env(safe-area-inset-top))
+        18px
+        max(30px, env(safe-area-inset-bottom));
     }
 
     /* HEADER */
 
     header {
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
-      gap: 30px;
-      margin-bottom: 55px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
       gap: 15px;
+      margin-bottom: 38px;
     }
 
     .logo {
-      border: 1px solid rgba(255,255,255,0.35);
-      border-radius: 12px;
-      padding: 12px 20px;
-      font-weight: bold;
-      font-size: 20px;
-      letter-spacing: 4px;
-    }
+      min-width: 78px;
+      padding: 11px 15px;
 
-    .brand-text {
-      color: rgba(255,255,255,0.55);
-      font-size: 14px;
-      line-height: 1.4;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 12px;
+
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-align: center;
     }
 
     .event {
       text-align: right;
-      color: rgba(255,255,255,0.65);
-      font-size: 14px;
+      font-size: 11px;
+      line-height: 1.45;
+      color: var(--muted);
     }
 
     .event strong {
-      color: white;
       display: block;
-      margin-bottom: 4px;
-      letter-spacing: 1px;
+      color: white;
+      font-size: 12px;
+      letter-spacing: 0.8px;
     }
 
     /* HERO */
 
     .hero {
-      max-width: 800px;
-      margin: 0 auto 50px;
-      text-align: center;
+      margin-bottom: 34px;
     }
 
     .tag {
-      display: inline-block;
-      padding: 8px 16px;
-      border: 1px solid rgba(255,255,255,0.18);
+      display: inline-flex;
+      align-items: center;
+
+      padding: 7px 11px;
+      margin-bottom: 17px;
+
+      border: 1px solid rgba(101,214,207,0.25);
       border-radius: 100px;
-      color: rgba(255,255,255,0.7);
-      font-size: 12px;
-      letter-spacing: 2px;
-      margin-bottom: 22px;
+
+      background: rgba(101,214,207,0.06);
+
+      color: var(--accent);
+
+      font-size: 10px;
+      letter-spacing: 1.7px;
+      font-weight: 600;
     }
 
     h1 {
-      font-size: clamp(38px, 5vw, 68px);
-      line-height: 1.05;
+      max-width: 500px;
+      font-size: clamp(34px, 10vw, 50px);
+      line-height: 0.98;
+      letter-spacing: -1.8px;
       font-weight: 500;
-      letter-spacing: -2px;
     }
 
     h1 span {
-      color: #65d6cf;
+      color: var(--accent);
     }
 
-    .hero p {
-      margin-top: 20px;
-      color: rgba(255,255,255,0.6);
-      font-size: 18px;
+    .intro {
+      margin-top: 17px;
+
+      max-width: 440px;
+
+      font-size: 15px;
+      line-height: 1.55;
+
+      color: var(--muted);
     }
 
     /* BOTONERA */
 
     .buttons {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
 
     .card {
-      min-height: 260px;
       position: relative;
-      padding: 25px;
-      border-radius: 22px;
-      border: 1px solid rgba(255,255,255,0.13);
-      background: rgba(255,255,255,0.045);
-      backdrop-filter: blur(8px);
+
+      display: flex;
+      align-items: center;
+
+      min-height: 105px;
+
+      padding: 18px;
+      padding-right: 55px;
+
+      border: 1px solid var(--border);
+      border-radius: 19px;
+
+      background: var(--card);
+
       text-decoration: none;
-      color: white;
-      transition: 0.25s ease;
+
       overflow: hidden;
+
+      transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
     }
 
-    .card::before {
-      content: "";
-      position: absolute;
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      background: rgba(101,214,207,0.08);
-      right: -100px;
-      top: -100px;
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(101,214,207,0.55);
-      background: rgba(255,255,255,0.08);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.18);
-    }
-
-    .card:hover::before {
-      transform: scale(1.5);
-    }
-
-    .number {
-      color: #65d6cf;
-      font-size: 13px;
-      letter-spacing: 2px;
-      margin-bottom: 35px;
+    .card:active {
+      transform: scale(0.985);
+      background: var(--card-hover);
+      border-color: rgba(101,214,207,0.5);
     }
 
     .icon {
-      width: 46px;
-      height: 46px;
-      border: 1px solid rgba(101,214,207,0.45);
-      border-radius: 14px;
+      flex-shrink: 0;
+
+      width: 52px;
+      height: 52px;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 24px;
-      color: #65d6cf;
-      margin-bottom: 20px;
+
+      margin-right: 16px;
+
+      border-radius: 15px;
+      border: 1px solid rgba(101,214,207,0.34);
+
+      background: var(--accent-soft);
+
+      color: var(--accent);
+
+      font-size: 23px;
+    }
+
+    .text {
+      min-width: 0;
+    }
+
+    .number {
+      margin-bottom: 4px;
+
+      color: var(--accent);
+
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.4px;
     }
 
     .card h2 {
-      font-size: 21px;
-      font-weight: 500;
-      margin-bottom: 9px;
+      font-size: 18px;
+      line-height: 1.15;
+      font-weight: 600;
     }
 
     .card p {
-      color: rgba(255,255,255,0.52);
-      font-size: 14px;
-      line-height: 1.5;
-      max-width: 250px;
+      margin-top: 5px;
+
+      color: var(--muted);
+
+      font-size: 12px;
+      line-height: 1.4;
     }
 
     .arrow {
       position: absolute;
-      bottom: 24px;
-      right: 25px;
-      color: rgba(255,255,255,0.7);
-      font-size: 22px;
-      transition: 0.25s;
+
+      right: 18px;
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      color: rgba(255,255,255,0.6);
+
+      font-size: 23px;
     }
 
-    .card:hover .arrow {
-      color: #65d6cf;
-      transform: translateX(5px);
+    .featured {
+      border-color: rgba(101,214,207,0.42);
+
+      background:
+        linear-gradient(
+          120deg,
+          rgba(101,214,207,0.14),
+          rgba(255,255,255,0.05)
+        );
     }
 
-    /* Tarjeta destacada */
+    /* CTA */
 
-    .card.featured {
-      border-color: rgba(101,214,207,0.45);
-      background: rgba(101,214,207,0.09);
+    .main-cta {
+      display: block;
+
+      margin-top: 24px;
+      padding: 17px 20px;
+
+      border-radius: 16px;
+
+      background: var(--accent);
+
+      color: #06242c;
+
+      text-decoration: none;
+      text-align: center;
+
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .main-cta:active {
+      transform: scale(0.99);
     }
 
     /* FOOTER */
 
     footer {
-      margin-top: 35px;
+      margin-top: 34px;
       padding-top: 22px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      display: flex;
-      justify-content: space-between;
-      color: rgba(255,255,255,0.42);
-      font-size: 13px;
+
+      border-top: 1px solid rgba(255,255,255,0.09);
+
+      text-align: center;
+
+      color: rgba(255,255,255,0.4);
+
+      font-size: 11px;
+      line-height: 1.6;
     }
 
     footer a {
-      color: #65d6cf;
+      display: inline-block;
+
+      margin-top: 5px;
+
+      color: var(--accent);
       text-decoration: none;
     }
 
-    /* RESPONSIVE */
+    /* DESKTOP */
 
-    @media (max-width: 900px) {
+    @media (min-width: 760px) {
+
       .page {
-        padding: 28px 25px;
+        max-width: 1100px;
+        padding-left: 35px;
+        padding-right: 35px;
       }
 
       .buttons {
+        display: grid;
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .brand-text {
-        display: none;
-      }
-    }
-
-    @media (max-width: 600px) {
-      header {
-        align-items: flex-start;
-      }
-
-      .buttons {
-        grid-template-columns: 1fr;
-      }
-
       .card {
-        min-height: 220px;
+        min-height: 125px;
       }
 
-      h1 {
-        font-size: 42px;
+      .hero {
+        max-width: 680px;
       }
 
-      footer {
-        flex-direction: column;
-        gap: 10px;
-      }
     }
+
   </style>
 </head>
 
+
 <body>
 
-  <!-- Fondo decorativo -->
-  <svg class="network" viewBox="0 0 1440 900" preserveAspectRatio="none">
-    <g fill="none" stroke="#65d6cf" stroke-width="1">
-
-      <path d="M0 180 L200 80 L410 170 L620 60 L820 170 L1050 80 L1440 190" />
-      <path d="M0 600 L210 510 L450 620 L700 490 L930 590 L1200 470 L1440 560" />
-
-      <line x1="200" y1="80" x2="210" y2="510"/>
-      <line x1="410" y1="170" x2="450" y2="620"/>
-      <line x1="620" y1="60" x2="700" y2="490"/>
-      <line x1="820" y1="170" x2="930" y2="590"/>
-      <line x1="1050" y1="80" x2="1200" y2="470"/>
-
-    </g>
-
-    <g fill="#65d6cf">
-      <circle cx="200" cy="80" r="4"/>
-      <circle cx="410" cy="170" r="4"/>
-      <circle cx="620" cy="60" r="4"/>
-      <circle cx="820" cy="170" r="4"/>
-      <circle cx="1050" cy="80" r="4"/>
-      <circle cx="210" cy="510" r="4"/>
-      <circle cx="450" cy="620" r="4"/>
-      <circle cx="700" cy="490" r="4"/>
-      <circle cx="930" cy="590" r="4"/>
-      <circle cx="1200" cy="470" r="4"/>
-    </g>
-  </svg>
-
-
   <main class="page">
-    <div class="content">
 
-      <header>
+    <!-- CABECERA -->
 
-        <div class="brand">
-          <div class="logo">CIER</div>
+    <header>
 
-          <div class="brand-text">
-            Comisión de Integración<br>
-            Energética Regional
+      <div class="logo">
+        CIER
+      </div>
+
+      <div class="event">
+        <strong>V SIMPOSIO CIER</strong>
+        Montevideo · 2026
+      </div>
+
+    </header>
+
+
+    <!-- PRESENTACIÓN -->
+
+    <section class="hero">
+
+      <div class="tag">
+        ENERGÍA · INNOVACIÓN · REGIÓN
+      </div>
+
+      <h1>
+        Conectamos<br>
+        <span>energía y futuro.</span>
+      </h1>
+
+      <p class="intro">
+        Explorá contenidos, capacitación, innovación y oportunidades
+        de la comunidad energética regional.
+      </p>
+
+    </section>
+
+
+    <!-- BOTONES -->
+
+    <section class="buttons">
+
+      <!-- 01 -->
+
+      <a
+        href="https://cier.org"
+        class="card"
+        target="_blank"
+        rel="noopener"
+      >
+
+        <div class="icon">
+          ◎
+        </div>
+
+        <div class="text">
+
+          <div class="number">
+            01
           </div>
+
+          <h2>
+            Conocé CIER
+          </h2>
+
+          <p>
+            Nuestra comunidad y presencia regional.
+          </p>
+
         </div>
 
-        <div class="event">
-          <strong>V SIMPOSIO CIER</strong>
-          Montevideo · 2026
+        <div class="arrow">
+          →
         </div>
 
-      </header>
+      </a>
 
 
-      <section class="hero">
+      <!-- 02 -->
 
-        <div class="tag">
-          ENERGÍA · INNOVACIÓN · REGIÓN
+      <a
+        href="#"
+        class="card"
+      >
+
+        <div class="icon">
+          ◇
         </div>
 
-        <h1>
-          Conectamos energía,<br>
-          <span>conocimiento y futuro</span>
-        </h1>
+        <div class="text">
 
-        <p>
-          Descubrí todo lo que CIER tiene para vos.
-        </p>
+          <div class="number">
+            02
+          </div>
 
-      </section>
-
-
-      <section class="buttons">
-
-        <a href="https://cier.org" class="card" target="_blank">
-
-          <div class="number">01 ─────</div>
-
-          <div class="icon">◎</div>
-
-          <h2>Conocé CIER</h2>
+          <h2>
+            Capacitación CIER
+          </h2>
 
           <p>
-            Nuestra comunidad, misión y presencia en toda la región.
+            Formación para profesionales del sector.
           </p>
 
-          <div class="arrow">→</div>
+        </div>
 
-        </a>
+        <div class="arrow">
+          →
+        </div>
+
+      </a>
 
 
-        <a href="#" class="card">
+      <!-- 03 -->
 
-          <div class="number">02 ─────</div>
+      <a
+        href="#"
+        class="card"
+      >
 
-          <div class="icon">◇</div>
+        <div class="icon">
+          ▥
+        </div>
 
-          <h2>Capacitación CIER</h2>
+        <div class="text">
+
+          <div class="number">
+            03
+          </div>
+
+          <h2>
+            Estudios e informes
+          </h2>
 
           <p>
-            Formación y desarrollo profesional para el sector energético.
+            Información para mejores decisiones.
           </p>
 
-          <div class="arrow">→</div>
+        </div>
 
-        </a>
+        <div class="arrow">
+          →
+        </div>
+
+      </a>
 
 
-        <a href="#" class="card">
+      <!-- 04 -->
 
-          <div class="number">03 ─────</div>
+      <a
+        href="#"
+        class="card"
+      >
 
-          <div class="icon">▥</div>
+        <div class="icon">
+          ✦
+        </div>
 
-          <h2>Estudios e informes</h2>
+        <div class="text">
+
+          <div class="number">
+            04
+          </div>
+
+          <h2>
+            Innovación
+          </h2>
 
           <p>
-            Información y conocimiento que impulsan mejores decisiones.
+            Tecnología y transformación energética.
           </p>
 
-          <div class="arrow">→</div>
+        </div>
 
-        </a>
+        <div class="arrow">
+          →
+        </div>
+
+      </a>
 
 
-        <a href="#" class="card">
+      <!-- 05 -->
 
-          <div class="number">04 ─────</div>
+      <a
+        href="#"
+        class="card"
+      >
 
-          <div class="icon">✦</div>
+        <div class="icon">
+          □
+        </div>
 
-          <h2>Innovación</h2>
+        <div class="text">
+
+          <div class="number">
+            05
+          </div>
+
+          <h2>
+            Próximos eventos
+          </h2>
 
           <p>
-            Tecnología, transformación digital y nuevas soluciones energéticas.
+            Encuentros y actividades en la región.
           </p>
 
-          <div class="arrow">→</div>
+        </div>
 
-        </a>
+        <div class="arrow">
+          →
+        </div>
+
+      </a>
 
 
-        <a href="#" class="card">
+      <!-- 06 -->
 
-          <div class="number">05 ─────</div>
+      <a
+        href="#"
+        class="card featured"
+      >
 
-          <div class="icon">□</div>
+        <div class="icon">
+          +
+        </div>
 
-          <h2>Próximos eventos</h2>
+        <div class="text">
+
+          <div class="number">
+            06
+          </div>
+
+          <h2>
+            Sumate a CIER
+          </h2>
 
           <p>
-            Seminarios, encuentros y actividades en toda América Latina.
+            Conectá con la comunidad energética.
           </p>
 
-          <div class="arrow">→</div>
+        </div>
 
-        </a>
+        <div class="arrow">
+          →
+        </div>
 
+      </a>
 
-        <a href="#" class="card featured">
-
-          <div class="number">06 ─────</div>
-
-          <div class="icon">＋</div>
-
-          <h2>Sumate a CIER</h2>
-
-          <p>
-            Conectá con la comunidad energética regional y descubrí nuevas oportunidades.
-          </p>
-
-          <div class="arrow">→</div>
-
-        </a>
-
-      </section>
+    </section>
 
 
-      <footer>
+    <!-- BOTÓN PRINCIPAL -->
 
-        <span>
-          CIER · Integración energética regional
-        </span>
+    <a
+      class="main-cta"
+      href="https://cier.org"
+      target="_blank"
+      rel="noopener"
+    >
+      Visitar cier.org ↗
+    </a>
 
-        <span>
-          <a href="https://cier.org" target="_blank">
-            cier.org ↗
-          </a>
-        </span>
 
-      </footer>
+    <!-- PIE -->
 
-    </div>
+    <footer>
+
+      Comisión de Integración Energética Regional
+
+      <br>
+
+      <a
+        href="https://cier.org"
+        target="_blank"
+        rel="noopener"
+      >
+        cier.org
+      </a>
+
+    </footer>
+
   </main>
 
 </body>

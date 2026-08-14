@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
 <meta charset="UTF-8">
 
 <meta
@@ -8,26 +9,48 @@
   content="width=device-width, initial-scale=1.0, viewport-fit=cover"
 >
 
+<meta
+  name="theme-color"
+  content="#ffffff"
+>
+
 <title>Descubrí CIER</title>
 
 <style>
 
+/* =========================================================
+   COLORES CIER
+========================================================= */
+
 :root{
+
   --blue:#08A5D5;
   --blue-dark:#087DAA;
   --blue-soft:#E9F7FC;
 
-  --green:#159D60;
-  --yellow:#F6DF39;
-  --red:#DF3834;
+  --green:#18C900;
+  --green-soft:#ECFAEA;
+
+  --yellow:#E9FF00;
+  --yellow-soft:#FAFFD8;
+
+  --red:#EB0000;
+  --red-soft:#FDEBEB;
 
   --text:#1D2A33;
   --muted:#687780;
 
   --line:#DCE7EB;
+
   --white:#FFFFFF;
-  --bg:#F5F8F9;
+  --bg:#F3F7F8;
+
 }
+
+
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
   box-sizing:border-box;
@@ -40,6 +63,7 @@ html{
 }
 
 body{
+
   min-height:100vh;
 
   font-family:
@@ -48,6 +72,7 @@ body{
     sans-serif;
 
   color:var(--text);
+
   background:var(--bg);
 
   -webkit-font-smoothing:antialiased;
@@ -58,58 +83,68 @@ a{
 }
 
 
-/* =========================
-   CONTENEDOR
-========================= */
+/* =========================================================
+   CONTENEDOR PRINCIPAL
+========================================================= */
 
 .page{
+
   width:100%;
   max-width:620px;
+
+  min-height:100vh;
 
   margin:auto;
 
   background:white;
 
-  min-height:100vh;
-
   padding-bottom:
     max(32px, env(safe-area-inset-bottom));
+
 }
 
 
-/* =========================
-   FRANJA SUPERIOR CIER
-========================= */
+/* =========================================================
+   FRANJA SUPERIOR
+========================================================= */
 
 .top-line{
+
   height:7px;
 
   background:
     linear-gradient(
       90deg,
+
       var(--blue) 0%,
-      var(--blue) 55%,
-      var(--green) 55%,
-      var(--green) 70%,
-      var(--yellow) 70%,
-      var(--yellow) 85%,
-      var(--red) 85%,
+      var(--blue) 48%,
+
+      var(--green) 48%,
+      var(--green) 66%,
+
+      var(--yellow) 66%,
+      var(--yellow) 83%,
+
+      var(--red) 83%,
       var(--red) 100%
     );
+
 }
 
 
-/* =========================
+/* =========================================================
    HEADER
-========================= */
+========================================================= */
 
 .header{
+
   padding:
     max(16px, env(safe-area-inset-top))
     20px
     15px;
 
   display:flex;
+
   justify-content:space-between;
   align-items:center;
 
@@ -117,118 +152,121 @@ a{
 
   background:#ffffff;
 
-  border-bottom:1px solid #EEF2F3;
+  border-bottom:
+    1px solid #EEF2F3;
+
 }
 
 
-/* LOGO OFICIAL CIER */
+/* =========================================================
+   LOGO OFICIAL
+========================================================= */
 
 .brand{
+
   display:flex;
+
   align-items:center;
 
   text-decoration:none;
+
+  flex-shrink:0;
+
 }
 
 .cier-logo{
+
   display:block;
 
-  width:125px;
+  width:120px;
+
   height:auto;
 
   object-fit:contain;
+
 }
 
 
-/* EVENTO */
+/* =========================================================
+   EVENTO
+========================================================= */
 
 .event{
+
   text-align:right;
 
   color:#79868B;
 
   font-size:9px;
+
   line-height:1.45;
+
 }
 
 .event strong{
+
   display:block;
 
   margin-bottom:3px;
 
-  color:#009FE3;
+  color:var(--blue-dark);
 
   font-size:10px;
+
   font-weight:700;
 
   letter-spacing:.6px;
-}
-
-
-/* Pantallas muy chicas */
-
-@media(max-width:380px){
-
-  .cier-logo{
-    width:105px;
-  }
-
-  .event{
-    font-size:8px;
-  }
-
-  .event strong{
-    font-size:9px;
-  }
 
 }
 
 
-/* Tablet / Desktop */
-
-@media(min-width:800px){
-
-  .cier-logo{
-    width:155px;
-  }
-
-}
-
-/* =========================
+/* =========================================================
    HERO
-========================= */
+========================================================= */
 
 .hero{
+
   position:relative;
 
   padding:
-    44px
+    42px
     22px
     38px;
 
   overflow:hidden;
 
   background:white;
+
 }
 
+
+/* Círculo decorativo */
+
 .hero::after{
+
   content:"";
 
   position:absolute;
 
-  width:230px;
-  height:230px;
+  width:240px;
+  height:240px;
 
   border-radius:50%;
 
-  right:-145px;
-  top:-100px;
+  right:-150px;
+  top:-105px;
 
   background:var(--blue-soft);
+
 }
 
+
+/* Etiqueta superior */
+
 .label{
+
   position:relative;
+
   z-index:2;
 
   display:inline-block;
@@ -238,18 +276,25 @@ a{
   color:var(--blue-dark);
 
   font-size:10px;
+
   font-weight:700;
 
   letter-spacing:1.5px;
 
   text-transform:uppercase;
+
 }
 
+
+/* Título */
+
 h1{
+
   position:relative;
+
   z-index:2;
 
-  max-width:480px;
+  max-width:490px;
 
   font-size:
     clamp(37px,10.5vw,54px);
@@ -261,14 +306,22 @@ h1{
   font-weight:700;
 
   color:#273339;
+
 }
 
 h1 span{
+
   color:var(--blue);
+
 }
 
+
+/* Descripción */
+
 .description{
+
   position:relative;
+
   z-index:2;
 
   max-width:440px;
@@ -278,15 +331,18 @@ h1 span{
   color:var(--muted);
 
   font-size:15px;
+
   line-height:1.5;
+
 }
 
 
-/* =========================
+/* =========================================================
    TÍTULO BOTONERA
-========================= */
+========================================================= */
 
 .section-title{
+
   padding:
     0
     20px
@@ -295,38 +351,45 @@ h1 span{
   color:#66747A;
 
   font-size:10px;
+
   font-weight:700;
 
   letter-spacing:1.4px;
 
   text-transform:uppercase;
+
 }
 
 
-/* =========================
+/* =========================================================
    BOTONERA
-========================= */
+========================================================= */
 
 .buttons{
+
   padding:
     0
     16px;
 
   display:flex;
+
   flex-direction:column;
 
   gap:10px;
+
 }
 
 
-/* =========================
-   CARD
-========================= */
+/* =========================================================
+   TARJETAS
+========================================================= */
 
 .card{
+
   position:relative;
 
   display:flex;
+
   align-items:center;
 
   min-height:108px;
@@ -357,11 +420,18 @@ h1 span{
     border-color .16s ease,
     box-shadow .16s ease;
 
-  -webkit-tap-highlight-color:transparent;
+  -webkit-tap-highlight-color:
+    transparent;
+
 }
 
+
+/* Efecto al tocar */
+
 .card:active{
-  transform:scale(.985);
+
+  transform:
+    scale(.985);
 
   border-color:
     rgba(8,165,213,.55);
@@ -369,12 +439,16 @@ h1 span{
   box-shadow:
     0 4px 15px
     rgba(8,165,213,.12);
+
 }
 
 
-/* BARRA DE COLOR */
+/* =========================================================
+   BARRAS DE COLORES
+========================================================= */
 
 .card::before{
+
   content:"";
 
   position:absolute;
@@ -386,24 +460,37 @@ h1 span{
   width:5px;
 
   background:var(--blue);
+
 }
+
 
 .card.green::before{
+
   background:var(--green);
+
 }
+
 
 .card.yellow::before{
+
   background:var(--yellow);
+
 }
+
 
 .card.red::before{
+
   background:var(--red);
+
 }
 
 
-/* ICONO */
+/* =========================================================
+   ICONOS
+========================================================= */
 
 .icon{
+
   width:52px;
   height:52px;
 
@@ -413,6 +500,7 @@ h1 span{
   margin-right:15px;
 
   display:flex;
+
   align-items:center;
   justify-content:center;
 
@@ -423,65 +511,105 @@ h1 span{
   color:var(--blue-dark);
 
   font-size:23px;
+
 }
+
+
+/* Verde */
 
 .green .icon{
-  background:#E9F6EF;
-  color:var(--green);
+
+  background:var(--green-soft);
+
+  color:#159D60;
+
 }
+
+
+/* Amarillo */
 
 .yellow .icon{
-  background:#FFF9D6;
-  color:#A58900;
+
+  background:var(--yellow-soft);
+
+  color:#9A9300;
+
 }
+
+
+/* Rojo */
 
 .red .icon{
-  background:#FBEDEC;
+
+  background:var(--red-soft);
+
   color:var(--red);
+
 }
 
 
-/* TEXTO */
+/* =========================================================
+   TEXTO TARJETAS
+========================================================= */
 
 .card-content{
+
   min-width:0;
+
 }
 
+
 .number{
+
   margin-bottom:4px;
 
   color:#87949A;
 
   font-size:9px;
+
   font-weight:700;
 
   letter-spacing:1.3px;
 
   text-transform:uppercase;
+
 }
 
+
 .card h2{
+
   margin-bottom:5px;
 
   color:#26343A;
 
   font-size:18px;
+
   line-height:1.15;
 
   font-weight:700;
+
 }
 
+
 .card p{
+
   color:#76858B;
 
   font-size:12px;
+
   line-height:1.4;
+
 }
 
+
+/* Flecha */
+
 .arrow{
+
   position:absolute;
 
   right:17px;
+
   top:50%;
 
   transform:
@@ -490,14 +618,16 @@ h1 span{
   color:var(--blue);
 
   font-size:22px;
+
 }
 
 
-/* =========================
-   AFILIACIÓN DESTACADA
-========================= */
+/* =========================================================
+   BOTÓN DESTACADO - SUMATE
+========================================================= */
 
 .card.featured{
+
   margin-top:5px;
 
   border:
@@ -510,31 +640,43 @@ h1 span{
       #EFFAFF,
       white
     );
+
 }
 
+
 .card.featured::before{
+
   width:6px;
 
   background:var(--blue);
+
 }
 
+
 .card.featured .icon{
+
   color:white;
 
   background:var(--blue);
+
 }
+
 
 .card.featured h2{
+
   color:var(--blue-dark);
+
 }
 
 
-/* =========================
-   CTA SITIO PRINCIPAL
-========================= */
+/* =========================================================
+   BOTÓN WEB PRINCIPAL
+========================================================= */
 
 .website{
+
   display:flex;
+
   align-items:center;
   justify-content:space-between;
 
@@ -556,19 +698,29 @@ h1 span{
   text-decoration:none;
 
   font-size:13px;
+
   font-weight:700;
+
+  box-shadow:
+    0 7px 20px
+    rgba(8,165,213,.20);
+
 }
+
 
 .website span{
+
   font-size:20px;
+
 }
 
 
-/* =========================
-   FRANJA INSTITUCIONAL
-========================= */
+/* =========================================================
+   BLOQUE INSTITUCIONAL
+========================================================= */
 
 .integration{
+
   margin-top:28px;
 
   padding:
@@ -578,19 +730,25 @@ h1 span{
   background:#F0F7F9;
 
   text-align:center;
+
 }
 
+
 .integration strong{
+
   display:block;
 
-  margin-bottom:6px;
+  margin-bottom:7px;
 
   color:var(--blue-dark);
 
   font-size:17px;
+
 }
 
+
 .integration p{
+
   max-width:370px;
 
   margin:auto;
@@ -598,15 +756,64 @@ h1 span{
   color:#718087;
 
   font-size:12px;
+
   line-height:1.5;
+
 }
 
 
-/* =========================
+/* =========================================================
+   DETALLE DE COLORES CIER
+========================================================= */
+
+.cier-colors{
+
+  display:flex;
+
+  justify-content:center;
+
+  gap:7px;
+
+  margin-top:16px;
+
+}
+
+
+.cier-colors span{
+
+  display:block;
+
+  width:9px;
+  height:9px;
+
+  border-radius:50%;
+
+}
+
+
+.c-blue{
+  background:var(--blue);
+}
+
+.c-green{
+  background:var(--green);
+}
+
+.c-yellow{
+  background:var(--yellow);
+}
+
+.c-red{
+  background:var(--red);
+}
+
+
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 .footer{
+
   padding:
     24px
     20px
@@ -617,38 +824,107 @@ h1 span{
   color:#8B969A;
 
   font-size:10px;
+
   line-height:1.6;
+
 }
 
 
-/* =========================
-   DESKTOP
-========================= */
+/* =========================================================
+   CELULARES MUY CHICOS
+========================================================= */
+
+@media(max-width:380px){
+
+  .cier-logo{
+
+    width:100px;
+
+  }
+
+  .event{
+
+    font-size:8px;
+
+  }
+
+  .event strong{
+
+    font-size:9px;
+
+  }
+
+  h1{
+
+    font-size:35px;
+
+  }
+
+  .card h2{
+
+    font-size:17px;
+
+  }
+
+}
+
+
+/* =========================================================
+   TABLET / DESKTOP
+========================================================= */
 
 @media(min-width:800px){
 
   body{
+
     background:#E9EFF1;
+
   }
 
+
   .page{
+
     max-width:1050px;
 
     box-shadow:
       0 0 40px
       rgba(30,60,70,.08);
+
   }
 
-  .hero{
+
+  .header{
+
     padding-left:36px;
     padding-right:36px;
+
   }
+
+
+  .cier-logo{
+
+    width:150px;
+
+  }
+
+
+  .hero{
+
+    padding-left:36px;
+    padding-right:36px;
+
+  }
+
 
   .section-title{
+
     padding-left:36px;
+
   }
 
+
   .buttons{
+
     padding:
       0
       36px;
@@ -659,71 +935,108 @@ h1 span{
       repeat(2,1fr);
 
     gap:13px;
+
   }
 
+
   .website{
+
     margin-left:36px;
     margin-right:36px;
+
   }
 
 }
 
 </style>
+
 </head>
 
 
 <body>
 
+
 <main class="page">
+
+
+  <!-- =====================================================
+       FRANJA COLORES CIER
+  ====================================================== -->
 
   <div class="top-line"></div>
 
 
-  <!-- HEADER -->
 
-<header class="header">
+  <!-- =====================================================
+       HEADER
+  ====================================================== -->
 
-  <a
-    href="https://cier.org/"
-    class="brand"
-    aria-label="CIER"
-  >
+  <header class="header">
 
-    <img
-      src="logo.png"
-      alt="CIER - Comisión de Integración Energética Regional"
-      class="cier-logo"
+
+    <!-- LOGO OFICIAL CIER -->
+
+    <a
+      href="https://cier.org/"
+      class="brand"
+      aria-label="CIER"
     >
 
-  </a>
+      <img
+        src="logo.png"
+        alt="CIER - Comisión de Integración Energética Regional"
+        class="cier-logo"
+      >
 
-  <div class="event">
-
-    <strong>
-      V SIMPOSIO CIER
-    </strong>
-
-    Redes y Ciudades Inteligentes<br>
-    Montevideo · 2026
-
-  </div>
-
-</header>
+    </a>
 
 
 
-  <!-- HERO -->
+    <!-- EVENTO -->
+
+    <div class="event">
+
+      <strong>
+        V SIMPOSIO CIER
+      </strong>
+
+      Redes y Ciudades Inteligentes
+
+      <br>
+
+      Montevideo · 2026
+
+    </div>
+
+
+  </header>
+
+
+
+  <!-- =====================================================
+       HERO
+  ====================================================== -->
 
   <section class="hero">
 
+
     <div class="label">
+
       Integración energética regional
+
     </div>
 
+
     <h1>
+
       Conectamos una región
-      <span>a través de la energía.</span>
+
+      <span>
+        a través de la energía.
+      </span>
+
     </h1>
+
 
     <p class="description">
 
@@ -734,251 +1047,364 @@ h1 span{
 
     </p>
 
+
   </section>
 
 
 
+  <!-- =====================================================
+       TÍTULO
+  ====================================================== -->
+
   <div class="section-title">
+
     Descubrí CIER
+
   </div>
 
 
 
-  <!-- BOTONERA -->
+  <!-- =====================================================
+       BOTONERA
+  ====================================================== -->
 
   <section class="buttons">
 
 
-    <!-- 01 -->
+
+    <!-- ====================
+         01 - CIER
+    ===================== -->
 
     <a
       href="https://cier.org/nosotros/"
       class="card"
     >
 
+
       <div class="icon">
+
         ◉
+
       </div>
+
 
       <div class="card-content">
 
+
         <div class="number">
+
           01 · Institucional
+
         </div>
 
+
         <h2>
+
           Conocé CIER
+
         </h2>
 
+
         <p>
+
           Nuestra historia, misión,
           alcance y presencia regional.
+
         </p>
+
 
       </div>
 
+
       <span class="arrow">
+
         →
+
       </span>
+
 
     </a>
 
 
 
-    <!-- 02 -->
+    <!-- ====================
+         02 - CAPACITACIONES
+    ===================== -->
 
     <a
       href="https://cier.org/capacitaciones/"
       class="card green"
     >
 
+
       <div class="icon">
+
         ◇
+
       </div>
+
 
       <div class="card-content">
 
+
         <div class="number">
+
           02 · Desarrollo profesional
+
         </div>
 
+
         <h2>
-          Capacitaciones
+
+          Capacitaciones CIER
+
         </h2>
 
+
         <p>
+
           Cursos y programas especializados
-          para profesionales del sector.
+          para profesionales del sector energético.
+
         </p>
+
 
       </div>
 
+
       <span class="arrow">
+
         →
+
       </span>
+
 
     </a>
 
 
 
-    <!-- 03 -->
+    <!-- ====================
+         03 - CONOCIMIENTO
+    ===================== -->
 
     <a
       href="https://cier.org/conocimientos/"
       class="card yellow"
     >
 
+
       <div class="icon">
+
         ▥
+
       </div>
+
 
       <div class="card-content">
 
+
         <div class="number">
+
           03 · Información
+
         </div>
 
+
         <h2>
-          Conocimiento
+
+          Conocimiento CIER
+
         </h2>
 
+
         <p>
+
           Estudios, informes,
-          estadísticas y mejores prácticas.
+          estadísticas y mejores prácticas
+          del sector energético.
+
         </p>
+
 
       </div>
 
+
       <span class="arrow">
+
         →
+
       </span>
+
 
     </a>
 
 
 
-    <!-- 04 -->
+    <!-- ====================
+         04 - EVENTOS
+    ===================== -->
 
     <a
       href="https://cier.org/eventos/"
       class="card red"
     >
 
+
       <div class="icon">
+
         ◫
+
       </div>
+
 
       <div class="card-content">
 
+
         <div class="number">
+
           04 · Comunidad
+
         </div>
 
+
         <h2>
+
           Eventos CIER
+
         </h2>
 
+
         <p>
-          Encuentros con líderes
-          y profesionales de toda la región.
+
+          Encuentros con líderes,
+          especialistas y profesionales
+          de toda la región.
+
         </p>
+
 
       </div>
 
+
       <span class="arrow">
+
         →
+
       </span>
+
 
     </a>
 
 
 
-    <!-- 05 -->
+    <!-- ====================
+         05 - PROYECTOS
+    ===================== -->
 
     <a
       href="https://cier.org/proyectos/"
       class="card"
     >
 
+
       <div class="icon">
+
         ✦
+
       </div>
+
 
       <div class="card-content">
 
+
         <div class="number">
+
           05 · Integración
+
         </div>
 
+
         <h2>
-          Proyectos
+
+          Proyectos CIER
+
         </h2>
 
+
         <p>
+
           Iniciativas y trabajo colaborativo
           para transformar el sector energético.
+
         </p>
+
 
       </div>
 
+
       <span class="arrow">
+
         →
+
       </span>
+
 
     </a>
 
 
 
-    <!-- 06 -->
+    <!-- ====================
+         06 - AFILIACIÓN
+    ===================== -->
 
     <a
       href="https://cier.org/beneficios-de-afiliarse/"
       class="card featured"
     >
 
+
       <div class="icon">
+
         +
+
       </div>
+
 
       <div class="card-content">
 
+
         <div class="number">
+
           06 · Formá parte
+
         </div>
 
+
         <h2>
+
           Sumate a CIER
+
         </h2>
 
-        <section class="integration">
 
-          <strong>
-            Integración energética regional
-          </strong>
-        
-          <p>
-            CIER promueve e impulsa la integración
-            del sector energético regional.
-          </p>
-        
-        </section>
-        
-        
-        <footer class="footer">
-        
-          Comisión de Integración Energética Regional
-        
-          <br>
-        
-          Montevideo · Uruguay
-        
-        </footer>
+        <p>
+
+          Descubrí los beneficios de integrar
+          la comunidad energética regional.
+
+        </p>
+
 
       </div>
 
+
       <span class="arrow">
+
         →
+
       </span>
+
 
     </a>
 
@@ -987,41 +1413,69 @@ h1 span{
 
 
 
-  <!-- CTA -->
+  <!-- =====================================================
+       SITIO PRINCIPAL
+  ====================================================== -->
 
   <a
     href="https://cier.org/"
     class="website"
   >
 
-    Visitar cier.org
+    Visitar sitio oficial de CIER
 
     <span>
+
       ↗
+
     </span>
 
   </a>
 
 
 
-  <!-- INSTITUCIONAL -->
+  <!-- =====================================================
+       INSTITUCIONAL
+  ====================================================== -->
 
   <section class="integration">
 
+
     <strong>
+
       Integración energética regional
+
     </strong>
 
+
     <p>
-      Promovemos e impulsamos la integración
+
+      CIER promueve e impulsa la integración
       del sector energético regional.
+
     </p>
+
+
+    <div class="cier-colors">
+
+      <span class="c-blue"></span>
+
+      <span class="c-green"></span>
+
+      <span class="c-yellow"></span>
+
+      <span class="c-red"></span>
+
+    </div>
+
 
   </section>
 
 
 
-  <!-- FOOTER -->
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
 
   <footer class="footer">
 
@@ -1036,5 +1490,7 @@ h1 span{
 
 </main>
 
+
 </body>
+
 </html>
